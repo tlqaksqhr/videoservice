@@ -11,7 +11,7 @@ class Video(
 
     val title: String,
 
-    val videoUrl: String,
+    val videoUrlPostFix: String,
 
     val dateUploaded: String,
 

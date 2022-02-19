@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param
 
 interface VideoRepository: JpaRepository<Video, Long> {
 
-    @Query("SELECT Video as v FROM Video WHERE v.videoSeries.id = seriesId")
+    @Query("SELECT v FROM Video as v WHERE v.videoSeries.id = :seriesId")
     fun findByVideoSeries(@Param("seriesId") seriesId: Long): List<Video>
 
 }

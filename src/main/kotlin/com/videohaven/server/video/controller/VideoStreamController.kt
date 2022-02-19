@@ -9,16 +9,17 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.PathVariable
 
-
-@Controller("/video/streaming")
+@Controller
 class VideoStreamController(
     private val videoStreamService: VideoStreamService
 ) {
 
-    @GetMapping("/{videoId}/{chunkName}")
-    fun downloadVideoChunk(@RequestParam videoId: String, @RequestParam chunkName: String): ResponseEntity<ByteArray> {
+    @GetMapping("/video/streaming/{videoId}/{chunkName}")
+    fun downloadVideoChunk(
+        @PathVariable videoId: String, @PathVariable chunkName: String
+    ): ResponseEntity<ByteArray> {
         val param = VideoChunkParam(
             videoId = videoId,
             chunkName = chunkName
